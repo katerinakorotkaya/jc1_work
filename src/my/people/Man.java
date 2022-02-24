@@ -2,6 +2,15 @@ package my.people;
 
 public class Man {
     int age = 18;
+
+    public Man() {
+        age = 18;
+    }
+
+    public Man(int age) {
+        this.age = age;
+    }
+
     String firstName = "Vasia";
     char nameLetter = 'V';
     int binAge = 0b010101;
@@ -15,8 +24,6 @@ public class Man {
     byte b1 = 123;
 
     public int getAge() {
-        int newAge = 25;
-        age = newAge;
         return age;
     }
 }
