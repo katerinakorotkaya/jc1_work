@@ -48,3 +48,4 @@ public class BasicCalculator {
         return (double) num1 % num2;
     }
 }
+
