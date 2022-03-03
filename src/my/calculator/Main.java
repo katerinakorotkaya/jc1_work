@@ -12,6 +12,7 @@ public class Main {
             checkExitOrContinue();
         }
     }
+
     private static Arguments readArguments() {
         System.out.println("Please enter first number: ");
         Scanner scanner = new Scanner(System.in);
@@ -22,31 +23,21 @@ public class Main {
 
         System.out.println("Enter second number: ");
         int secondNumber = scanner.nextInt();
+
         return new Arguments(firstNumber, operation, secondNumber);
     }
 
     private static void doCalculation(Arguments args) {
         BasicCalculator basicCalculator = new BasicCalculator();
-        final double result = basicCalculator.calculate(args.num1, args.num2, args.operation.charAt(0));
-        System.out.println("Result of " + firstNumber + operation.charAt(0) + secondNumber + " = " + result);
-
-    }
-
-    private static class Arguments {
-        private int num1;
-        private int num2;
-        private String operation;
-
-        public Arguments(int firstNumber, String operation, int secondNumber) {
-            this.num1 = firstNumber;
-            this.operation = operation;
-            this.num2 = secondNumber;
-        }
+        final double result =
+                basicCalculator.calculate(args.num1, args.num2, args.operation.charAt(0));
+        System.out.println("Result of " + args.num1
+                + args.operation.charAt(0) + args.num2 + " = " + result);
     }
 
     private static void checkExitOrContinue() {
-        System.out.print("Please enter [C] to continue or [E] to exit");
-        String command = new Scanner(System.in).nextInt();
+        System.out.print("Please enter [E] to exit or any key to continue: ");
+        String command = new Scanner(System.in).next();
         if (command.equalsIgnoreCase("E")) {
             System.exit(0);
         }
