@@ -8,5 +8,9 @@ public class ArraySort {
         System.out.println(Arrays.toString(testarray));
         Arrays.sort(testarray);
         System.out.println(Arrays.toString(testarray));
+
+        String[] testStrArray = {"b", "c", "d", "a", "aa", "ye", "bb"};
+        Arrays.sort(testStrArray);
+        System.out.println(Arrays.toString(testStrArray));
     }
 }

@@ -1,4 +1,4 @@
-package my.array;
+package my.array1;
 
 public class Main {
     static double average(int[] numbers) {
