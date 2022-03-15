@@ -23,6 +23,5 @@ public class Main {
 
         int[] test2 = new int[3];
         System.out.println(average(test2));
-
     }
 }
