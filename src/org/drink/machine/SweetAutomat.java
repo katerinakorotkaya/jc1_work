@@ -44,7 +44,6 @@ public class SweetAutomat {
         return payResult;
     }
 
-
     private boolean giveProduct(Sweet selectedProduct) {
         boolean result = productStorage.removeProduct(selectedProduct);
         userDisplay.printPurchaseResult(result);
