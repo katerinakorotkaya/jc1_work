@@ -1,26 +1,24 @@
 package org.drink.machine;
 
-public class DrinkAutomat {
-
+public class SweetAutomat {
     private final UserDisplay userDisplay;
-    private final ProductStorage<Beverage> productStorage;
+    private final ProductStorage<Sweet> productStorage;
 
-    public DrinkAutomat() {
+    public SweetAutomat() {
         this.userDisplay = new UserDisplay();
+        Sweet[] sweets = new Sweet[4];
+        sweets[0] = new Sweet("Mars", 1.5, 5);
+        sweets[1] = new Sweet("Bounty", 2, 5);
+        sweets[2] = new Sweet("Alyonuska", 2, 5);
+        sweets[3] = new Sweet("Nuts", 2.65, 5);
 
-        Beverage[] products = new Beverage[5];
-        products[0] = new Beverage("Coca-Cola", 2.00, 5, 0.33);
-        products[1] = new Beverage("Fanta", 2.00, 5, 0.33);
-        products[2] = new Beverage("Sprite", 2.00, 5, 0.25);
-        products[3] = new Beverage("Fuze Tea", 1.50, 5, 0.25);
-        products[4] = new Beverage("Bonaqua", 1.09, 5, 0.5);
-        this.productStorage = new ProductStorage<>(products);
+        productStorage = new ProductStorage<>(sweets);
     }
 
     public void work() {
         while (true) {
             showProducts();
-            Beverage selectedProduct = selectProduct();
+            Sweet selectedProduct = selectProduct();
             payProduct(selectedProduct);
             if (!giveProduct(selectedProduct)) break;
         }
@@ -30,13 +28,13 @@ public class DrinkAutomat {
         userDisplay.print(productStorage.getProducts());
     }
 
-    private Beverage selectProduct() {
+    private Sweet selectProduct() {
         userDisplay.promptSelectProduct();
         int productNumber = userDisplay.readProductNumber();
         return productStorage.getProductByNumber(productNumber);
     }
 
-    private boolean payProduct(Beverage selectedProduct) {
+    private boolean payProduct(Sweet selectedProduct) {
         String productName = selectedProduct.getName();
         double price = selectedProduct.getPrice();
         userDisplay.printPaymentPromt(productName, price);
@@ -47,12 +45,14 @@ public class DrinkAutomat {
     }
 
 
-    private boolean giveProduct(Beverage selectedProduct) {
+    private boolean giveProduct(Sweet selectedProduct) {
         boolean result = productStorage.removeProduct(selectedProduct);
         userDisplay.printPurchaseResult(result);
         return result;
     }
 
-
+    public static void main(String[] args) {
+        SweetAutomat sweetAutomat = new SweetAutomat();
+        sweetAutomat.work();
+    }
 }
-

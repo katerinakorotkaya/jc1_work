@@ -12,5 +12,9 @@ public class ArraySort {
         String[] testStrArray = {"b", "c", "d", "a", "aa", "ye", "bb"};
         Arrays.sort(testStrArray);
         System.out.println(Arrays.toString(testStrArray));
+
+        for (String s : testStrArray){
+            System.out.print(s + " ");
+        }
     }
 }

@@ -1,10 +1,10 @@
 package org.drink.machine;
 
-public class Product {
+public class Product implements Countable {
 
     final private String name;
     final private double price;
-    final private int count;
+    private int count;
 
     public Product(String name, double price) {
         this(name, price, 0);
@@ -26,5 +26,9 @@ public class Product {
 
     public int getCount() {
         return count;
+    }
+
+    public void decreaseCount(){
+        count--;
     }
 }
