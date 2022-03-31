@@ -11,12 +11,7 @@ public class OuterWithAnonymousInner {
     }
 
     public void buildAnotherAnonymous() {
-        getSomeInterface(new SomeInterface() {
-            @Override
-            public void doSomething() {
-                System.out.println("Another inner class implementation #2");
-            }
-        });
+        getSomeInterface(() -> System.out.println("Another inner class implementation #2"));
     }
 
     private void getSomeInterface(SomeInterface someInterface) {
