@@ -12,12 +12,17 @@ public class UserCounter extends Thread {
             }
 
     public static void main(String[] args) {
-        UserCounter userCounter = new UserCounter();
-        userCounter.setName("userCounterThread");
-        userCounter.start();
 
-        while (true){
-            //
+        try {
+            int i = 0;
+            while (true){
+                UserCounter userCounter = new UserCounter();
+                userCounter.setName("userCounterThread" + i++);
+                userCounter.start();
+                Thread.sleep(5000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
